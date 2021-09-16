@@ -1,7 +1,7 @@
 FROM openjdk:16-alpine3.13
 
-WORKDIR /rabbit-listener
+WORKDIR /rabbit-consumer
 
 COPY target/*.jar RabbitConsumer.jar
 
-CMD ["java","-jar","/RabbitConsumer.jar"]
+ENTRYPOINT ["java","-jar","/rabbit-consumer/RabbitConsumer.jar"]

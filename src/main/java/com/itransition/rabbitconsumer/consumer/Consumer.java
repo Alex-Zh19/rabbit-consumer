@@ -10,21 +10,28 @@ import java.util.concurrent.TimeoutException;
 public class Consumer {
 
     private final String QUEUE_NAME = "messageBrokerQueue";
+    private String messageFromQueue = "default";
 
-    public void get() {
+    public String get() throws TimeoutException, IOException {
         ConnectionFactory factory = new ConnectionFactory();
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            channel.basicConsume(QUEUE_NAME, true, (consumerTag, message) -> {
-                        String m = new String(message.getBody(), "UTF-8");
-                        System.out.println("message is: " + m);
+            channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+            GetResponse response= channel.basicGet(QUEUE_NAME,true);
+            String message= new String(response.getBody(),"UTF-8");
+            /*channel.basicConsume(QUEUE_NAME, true, (consumerTag, message) -> {
+                        String me = new String(message.getBody(), "UTF-8");
+                        messageFromQueue = me;
+                        System.out.println(me);
+                        throw new RuntimeException("exeception blin");
                     },
                     consumerTage -> {
+                        System.out.println("shhit");
                     });
-        } catch (TimeoutException | IOException e) {
-            System.out.println(e);
+        }*/
+            return message;
         }
     }
+
 
 }

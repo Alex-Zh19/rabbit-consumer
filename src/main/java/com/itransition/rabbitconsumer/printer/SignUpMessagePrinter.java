@@ -5,6 +5,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 @Component
 public class SignUpMessagePrinter {
     private final Consumer consumer;
@@ -14,8 +17,9 @@ public class SignUpMessagePrinter {
         this.consumer = consumer;
     }
 
-    @RabbitListener
-    public void listen(String in){
-        System.out.printf(in);
+    @RabbitListener(queues = "messageBrokerQueue")
+    public void listen() throws IOException, TimeoutException {
+        String get = consumer.get();
+        System.out.printf(get);
     }
 }
