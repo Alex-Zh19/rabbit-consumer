@@ -9,5 +9,4 @@ class RabbitConsumerApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
