@@ -6,7 +6,6 @@ target/
 
 META-INF
 .MF
-src/test
 
 ### STS ###
 .apt_generated
