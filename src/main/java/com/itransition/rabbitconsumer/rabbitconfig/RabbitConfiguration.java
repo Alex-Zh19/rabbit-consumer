@@ -11,16 +11,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfiguration {
 
-    @Value("${rabbit.host}")
-    private String HOST;
     @Value("${rabbit.queue}")
     private String QUEUE_NAME;
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory(HOST);
-        return connectionFactory;
+        return new CachingConnectionFactory();
     }
 
     @Bean
