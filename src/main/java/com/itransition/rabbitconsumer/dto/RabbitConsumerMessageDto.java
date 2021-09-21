@@ -1,8 +1,13 @@
 package com.itransition.rabbitconsumer.dto;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+import java.io.Serializable;
 
-@Data
-public class RabbitConsumerMessageDto {
-    String message;
+@AllArgsConstructor
+@Getter
+@ToString
+public class RabbitConsumerMessageDto implements Serializable {
+   private final String message;
 }

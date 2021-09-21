@@ -17,12 +17,14 @@
         <java.version>11</java.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.18.20</lombok.version>
+        <playtika.testcontainer.version>2.0.14</playtika.testcontainer.version>
+        <spring.cloud.version>3.0.3</spring.cloud.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <version>3.0.3</version>
+            <version>${spring.cloud.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -69,11 +71,10 @@
         <dependency>
             <groupId>com.playtika.testcontainers</groupId>
             <artifactId>embedded-rabbitmq</artifactId>
-            <version>2.0.14</version>
+            <version>${playtika.testcontainer.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

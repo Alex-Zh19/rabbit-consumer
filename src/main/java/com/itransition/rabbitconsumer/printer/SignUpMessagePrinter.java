@@ -1,5 +1,6 @@
 package com.itransition.rabbitconsumer.printer;
 
+import com.itransition.rabbitconsumer.dto.RabbitConsumerMessageDto;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,8 +12,8 @@ public class SignUpMessagePrinter {
 
     private static final Logger logger = LogManager.getLogger();
 
-    @RabbitListener(queues = "messageBrokerQueue")
-    public void worker1(String message) {
-        logger.log(Level.INFO, message);
+    @RabbitListener(queues = "${rabbit.queue}", containerFactory = "containerFactory")
+    public void worker1(RabbitConsumerMessageDto messageDto) {
+        logger.log(Level.INFO, messageDto.toString());
     }
 }
