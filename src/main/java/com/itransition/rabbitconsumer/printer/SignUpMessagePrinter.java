@@ -12,7 +12,7 @@ public class SignUpMessagePrinter {
 
     private static final Logger logger = LogManager.getLogger();
 
-    @RabbitListener(queues = "${rabbit.queue}", containerFactory = "containerFactory")
+    @RabbitListener(queues = "${rabbit.queue}",messageConverter = "messageConverter")
     public void worker1(RabbitConsumerMessageDto messageDto) {
         logger.log(Level.INFO, messageDto.toString());
     }
