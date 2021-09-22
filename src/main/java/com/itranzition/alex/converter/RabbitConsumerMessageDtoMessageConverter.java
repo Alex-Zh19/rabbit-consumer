@@ -1,6 +1,7 @@
-package com.itransition.rabbitconsumer.converter;
+package com.itranzition.alex.converter;
 
-import com.itransition.rabbitconsumer.dto.RabbitConsumerMessageDto;
+import com.itranzition.alex.model.dto.RabbitConsumerMessageDto;
+import com.itranzition.alex.model.dto.RabbitConsumerMessageDto;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.support.converter.AbstractMessageConverter;
