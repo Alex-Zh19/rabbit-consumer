@@ -1,4 +1,4 @@
-package com.itranzition.alex.model.dto;
+package com.itranzition.alex.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,5 +10,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RabbitConsumerMessageDto implements Serializable {
-    String message;
+    private String message;
 }
