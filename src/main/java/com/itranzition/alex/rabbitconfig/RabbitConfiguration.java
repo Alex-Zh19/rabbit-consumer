@@ -1,9 +1,8 @@
 package com.itranzition.alex.rabbitconfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -24,15 +23,6 @@ public class RabbitConfiguration {
     @Bean
     public ConnectionFactory connectionFactory() {
         return new CachingConnectionFactory(HOST);
-    }
-
-    @Bean(name = "factory")
-    public SimpleRabbitListenerContainerFactory factory(ConnectionFactory connectionFactory,
-                                                        MessageConverter messageConverter) {
-        SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory = new SimpleRabbitListenerContainerFactory();
-        rabbitListenerContainerFactory.setConnectionFactory(connectionFactory);
-        rabbitListenerContainerFactory.setMessageConverter(messageConverter);
-        return rabbitListenerContainerFactory;
     }
 
     @Bean
