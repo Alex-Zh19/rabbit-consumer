@@ -19,6 +19,7 @@
         <playtika.testcontainer.version>2.0.14</playtika.testcontainer.version>
         <spring.cloud.version>3.0.3</spring.cloud.version>
         <jackson.version>2.12.5</jackson.version>
+        <jackson.jaxr.version>2.4.2</jackson.jaxr.version>
     </properties>
     <dependencies>
         <dependency>
@@ -82,12 +83,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>2.4.2</version>
+            <version>${jackson.jaxr.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.12.4</version>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
     <build>
