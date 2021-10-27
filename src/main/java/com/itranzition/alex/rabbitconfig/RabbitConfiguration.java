@@ -1,6 +1,8 @@
 package com.itranzition.alex.rabbitconfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itranzition.alex.properties.RabbitConfigurationProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -14,11 +16,11 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableRabbit
 @Configuration
+@RequiredArgsConstructor
 public class RabbitConfiguration {
-    @Value("${rabbit.queue}")
-    private String QUEUE_NAME;
     @Value("${spring.rabbitmq.host}")
     private String HOST;
+    private final RabbitConfigurationProperties properties;
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -27,7 +29,7 @@ public class RabbitConfiguration {
 
     @Bean
     public Queue myQueue() {
-        return new Queue(QUEUE_NAME);
+        return new Queue(properties.getQueue());
     }
 
     @Bean
