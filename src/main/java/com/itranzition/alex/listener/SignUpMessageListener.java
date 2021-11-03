@@ -1,4 +1,4 @@
-package com.itranzition.alex.printer;
+package com.itranzition.alex.listener;
 
 import com.itranzition.alex.model.MessagePrinter;
 import com.itranzition.alex.model.dto.RabbitConsumerMessageDto;
