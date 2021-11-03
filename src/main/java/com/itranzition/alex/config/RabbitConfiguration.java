@@ -1,4 +1,4 @@
-package com.itranzition.alex.rabbitconfig;
+package com.itranzition.alex.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itranzition.alex.properties.RabbitConfigurationProperties;
