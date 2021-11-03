@@ -1,7 +1,6 @@
 package com.itranzition.alex.repository;
 
-import com.itranzition.alex.dto.RabbitConsumerMessageDto;
-import com.itranzition.alex.util.RedisIdGenerator;
+import com.itranzition.alex.model.dto.RabbitConsumerMessageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,13 +8,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class RedisRepository {
-    private final RedisTemplate<Long, RabbitConsumerMessageDto> redisTemplate;
+    private final RedisTemplate<String, RabbitConsumerMessageDto> redisTemplate;
 
-    public void save(RabbitConsumerMessageDto messageDto) {
-        redisTemplate.opsForValue().set(RedisIdGenerator.getRedisId(), messageDto);
+    public void save(String keyEmail, RabbitConsumerMessageDto messageDto) {
+        redisTemplate.opsForValue().set(keyEmail, messageDto);
     }
 
-    public RabbitConsumerMessageDto findById(long id) {
-        return redisTemplate.opsForValue().get(id);
+    public RabbitConsumerMessageDto findByEmail(String email) {
+        return redisTemplate.opsForValue().get(email);
     }
 }

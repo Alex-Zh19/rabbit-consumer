@@ -1,4 +1,4 @@
-package com.itranzition.alex.dto;
+package com.itranzition.alex.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
