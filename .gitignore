@@ -21,6 +21,7 @@ META-INF
 *.iws
 *.iml
 *.ipr
+.gradle
 
 ### NetBeans ###
 /nbproject/private/
