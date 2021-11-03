@@ -9,7 +9,6 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,23 +17,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class RabbitConfiguration {
-    @Value("${spring.rabbitmq.host}")
-    private String HOST;
     private final RabbitConfigurationProperties properties;
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        return new CachingConnectionFactory(HOST);
+        return new CachingConnectionFactory(properties.getHost());
     }
 
     @Bean
     public Queue myQueue() {
         return new Queue(properties.getQueue());
-    }
-
-    @Bean
-    public ObjectMapper mapper() {
-        return new ObjectMapper();
     }
 
     @Bean
