@@ -43,7 +43,6 @@ dependencies {
     implementation "log4j:log4j:${log4jVersion}"
     testImplementation "com.playtika.testcontainers:embedded-redis:${testcontainerRedisVersion}"
     implementation "org.springframework.boot:spring-boot-starter-data-redis:${springBootStarterVersion}"
-
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootStarterVersion}"
     implementation "org.springframework.amqp:spring-rabbit:${springRabbitmqVersion}"
     implementation "org.springframework.boot:spring-boot-configuration-processor:${springBootStarterVersion}"
