@@ -14,15 +14,12 @@ public class SignUpDtoServiceImpl implements SignUpDtoService {
 
     @Override
     public void addSignUpLog(RabbitConsumerMessageDto dto) {
-        if (dto == null) {
-            throw new RuntimeException("dto cannot be null");
-        }
         String email = dto.getRegisteredUser().getEmail();
         repository.save(email, dto);
     }
 
     @Override
-    public RabbitConsumerMessageDto findSignUpLogById(String email) {
+    public RabbitConsumerMessageDto findSignUpLogByEmail(String email) {
         if (email == null || email.isBlank()) {
             throw new RuntimeException("email cannot be null or empty");
         }
